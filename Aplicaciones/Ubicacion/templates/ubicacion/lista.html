@@ -20,46 +20,47 @@
     }
 </script>
 
-<h1 class="text-center">Listado de Ubicaciones</h1>
-<div class="text-end mb-3">
-    <a href="nuevo/" class="btn btn-outline-success">Agregar Ubicación</a>
+<div class="container mt-5 ">
+    <h1 class="text-center">Listado de Ubicaciones</h1>
+    <div class="text-end mb-3">
+        <a href="nuevo/" class="btn btn-outline-success">Agregar Ubicación</a>
+    </div>
+    <table class="table table-bordered table-striped table-hover datatable">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Latitud</th>
+                <th>Longitud</th>
+                <th>Descripción</th>
+                <th>Creado</th>
+                <th>Actualizado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in ubicaciones %}
+            <tr>
+                <td>{{ u.id }}</td>
+                <td>{{ u.nombre }}</td>
+                <td>{{ u.latitud }}</td>
+                <td>{{ u.longitud }}</td>
+                <td>{{ u.descripcion }}</td>
+                <td>{{ u.creado|date:"Y-m-d H:i" }}</td>
+                <td>{{ u.actualizado|date:"Y-m-d H:i" }}</td>
+                <td>
+                    <a href="editar/{{ u.id }}/" class="btn btn-outline-warning btn-sm" title="Editar">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <button onclick="confirmDelete('{{ u.id }}')" class="btn btn-outline-danger btn-sm" title="Eliminar">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/" class="btn btn-secondary">Volver al menú</a>
 </div>
 
-<table class="table table-bordered table-striped table-hover">
-    <thead class="table-dark">
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Latitud</th>
-            <th>Longitud</th>
-            <th>Descripción</th>
-            <th>Creado</th>
-            <th>Actualizado</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for u in ubicaciones %}
-        <tr>
-            <td>{{ u.id }}</td>
-            <td>{{ u.nombre }}</td>
-            <td>{{ u.latitud }}</td>
-            <td>{{ u.longitud }}</td>
-            <td>{{ u.descripcion }}</td>
-            <td>{{ u.creado|date:"Y-m-d H:i" }}</td>
-            <td>{{ u.actualizado|date:"Y-m-d H:i" }}</td>
-            <td>
-                <a href="editar/{{ u.id }}/" class="btn btn-outline-warning">
-                    <i class="fa fa-pen"></i>
-                </a>
-                <a href="#" onclick="confirmDelete('{{ u.id }}')" class="btn btn-outline-danger">
-                    <i class="fa fa-trash"></i>
-                </a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
-<a href="/" class="btn btn-secondary">Volver al menú</a>
 {% endblock %}
