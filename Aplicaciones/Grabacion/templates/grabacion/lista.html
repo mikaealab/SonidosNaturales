@@ -1,0 +1,71 @@
+{% extends "plantilla.html" %}
+{% block contenido %}
+
+<script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: "CONFIRMACIÓN",
+            text: "¿Está seguro de eliminar esta grabación?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sí, eliminar",
+            cancelButtonText: "Cancelar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "eliminar/" + id + "/";
+            }
+        });
+    }
+</script>
+
+<h1 class="text-center">Listado de Grabaciones</h1>
+<div class="text-end mb-3">
+    <a href="nuevo/" class="btn btn-outline-success">Agregar Grabación</a>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Animal</th>
+            <th>Ubicación</th>
+            <th>Fecha</th>
+            <th>Investigador</th>
+            <th>Audio</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for g in grabaciones %}
+        <tr>
+            <td>{{ g.id }}</td>
+            <td>{{ g.animal.nombre_comun }}</td>
+            <td>{{ g.ubicacion.nombre }}</td>
+            <td>{{ g.fecha }}</td>
+            <td>{{ g.investigador }}</td>
+            <td>
+                {% if g.archivo_audio %}
+                <audio controls>
+                    <source src="{{ g.archivo_audio.url }}" type="audio/mpeg">
+                    Tu navegador no soporta audio.
+                </audio>
+                {% else %}
+                Sin audio
+                {% endif %}
+            </td>
+            <td>
+                <a href="editar/{{ g.id }}/" class="btn btn-outline-warning">
+                    <i class="fa fa-pen"></i>
+                </a>
+                <a href="#" onclick="confirmDelete('{{ g.id }}')" class="btn btn-outline-danger">
+                    <i class="fa fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="/" class="btn btn-secondary">Volver al menú</a>
+{% endblock %}

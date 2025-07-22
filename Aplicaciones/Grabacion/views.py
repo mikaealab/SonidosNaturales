@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Grabacion
-from animal.models import Animal
-from ubicacion.models import Ubicacion
+from Aplicaciones.Animal.models import Animal
+from Aplicaciones.Ubicacion.models import Ubicacion
+
 
 # Listar grabaciones
 def listaGrabaciones(request):

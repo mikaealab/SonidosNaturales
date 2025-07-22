@@ -1,0 +1,53 @@
+{% extends 'plantilla.html' %}
+{% block contenido %}
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 bg-light p-4 rounded">
+        <h1 class="mb-4">Editar Grabación</h1>
+        <form action="{% url 'procesar_edicion_grabacion' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{ grabacionEditar.id }}">
+
+            <label>Animal</label>
+            <select name="animal" class="form-control" required>
+                <option value="">Seleccione un animal</option>
+                {% for a in animales %}
+                <option value="{{ a.id }}" {% if a.id == grabacionEditar.animal.id %}selected{% endif %}>{{ a.nombre_comun }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Ubicación</label>
+            <select name="ubicacion" class="form-control" required>
+                <option value="">Seleccione una ubicación</option>
+                {% for u in ubicaciones %}
+                <option value="{{ u.id }}" {% if u.id == grabacionEditar.ubicacion.id %}selected{% endif %}>{{ u.nombre }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Archivo de audio</label>
+            {% if grabacionEditar.archivo_audio %}
+            <p><strong>Audio actual:</strong></p>
+            <audio controls>
+                <source src="{{ grabacionEditar.archivo_audio.url }}" type="audio/mpeg">
+                Tu navegador no soporta audio.
+            </audio>
+            {% endif %}
+            <input type="file" name="archivo_audio" class="form-control" required>
+
+            <label>Fecha</label>
+            <input type="date" name="fecha" value="{{ grabacionEditar.fecha }}" class="form-control" required>
+
+            <label>Investigador</label>
+            <input type="text" name="investigador" value="{{ grabacionEditar.investigador }}" class="form-control" required>
+
+            <label>Observaciones</label>
+            <textarea name="observaciones" class="form-control" rows="3">{{ grabacionEditar.observaciones }}</textarea>
+
+            <br>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+            <a class="btn btn-outline-danger" href="{% url 'lista_grabaciones' %}">Cancelar</a>
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+{% endblock %}
