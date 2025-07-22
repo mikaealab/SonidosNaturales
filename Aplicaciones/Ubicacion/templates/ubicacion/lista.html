@@ -33,6 +33,8 @@
             <th>Latitud</th>
             <th>Longitud</th>
             <th>Descripción</th>
+            <th>Creado</th>
+            <th>Actualizado</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -44,6 +46,8 @@
             <td>{{ u.latitud }}</td>
             <td>{{ u.longitud }}</td>
             <td>{{ u.descripcion }}</td>
+            <td>{{ u.creado|date:"Y-m-d H:i" }}</td>
+            <td>{{ u.actualizado|date:"Y-m-d H:i" }}</td>
             <td>
                 <a href="editar/{{ u.id }}/" class="btn btn-outline-warning">
                     <i class="fa fa-pen"></i>
