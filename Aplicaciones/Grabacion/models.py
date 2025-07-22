@@ -10,5 +10,8 @@ class Grabacion(models.Model):
     investigador = models.CharField(max_length=100)
     observaciones = models.TextField(blank=True)
 
+    creado = models.DateTimeField(auto_now_add=True)
+    actualizado = models.DateTimeField(auto_now=True)
+
     def __str__(self):
-        return f"{self.animal} - {self.fecha}"
+        return f"{self.animal.nombre_comun} - {self.fecha}"
