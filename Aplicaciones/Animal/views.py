@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Animal
+def home(request):
+    return render(request, 'home.html')  # Vista que extiende plantilla.html
 
 # Listar animales
 def listaAnimales(request):

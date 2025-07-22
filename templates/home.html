@@ -1,0 +1,108 @@
+{% extends 'plantilla.html' %}
+{% load static %}
+
+{% block contenido %}
+<!-- Carousel de bienvenida -->
+<div class="container-fluid carousel-header px-0">
+    <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#carouselId" data-bs-slide-to="1"></li>
+            <li data-bs-target="#carouselId" data-bs-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <img src="{% static 'environs/img/imagen1.jpg' %}" class="img-fluid" alt="Imagen 1">
+                <div class="carousel-caption">
+                    <div class="p-3 bg-dark bg-opacity-50 rounded">
+                        <h4 class="text-white text-uppercase fw-bold mb-3">Descubre los sonidos</h4>
+                        <h1 class="display-4 text-capitalize text-white mb-3">de la Naturaleza</h1>
+                        <p class="mb-4 fs-5 text-white">Explora grabaciones reales de animales en su hábitat.</p>
+                        <a class="btn btn-primary py-2 px-4" href="{% url 'lista_animales' %}">Explorar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'environs/img/imagen2.jpg' %}" class="img-fluid" alt="Imagen 2">
+                <div class="carousel-caption">
+                    <div class="p-3 bg-dark bg-opacity-50 rounded">
+                        <h4 class="text-white text-uppercase fw-bold mb-3">Grabaciones Ambientales</h4>
+                        <h1 class="display-4 text-capitalize text-white mb-3">de todo el país</h1>
+                        <p class="mb-4 fs-5 text-white">Reproduce y guarda grabaciones según la región o especie.</p>
+                        <a class="btn btn-primary py-2 px-4" href="{% url 'lista_grabaciones' %}">Escuchar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'environs/img/imagen3.jpg' %}" alt="Descripción">
+
+                <div class="carousel-caption">
+                    <div class="p-3 bg-dark bg-opacity-50 rounded">
+                        <h4 class="text-white text-uppercase fw-bold mb-3">Ubicaciones Naturales</h4>
+                        <h1 class="display-4 text-capitalize text-white mb-3">Registradas por expertos</h1>
+                        <p class="mb-4 fs-5 text-white">Consulta desde qué ubicaciones se han realizado grabaciones reales.</p>
+                        <a class="btn btn-primary py-2 px-4" href="{% url 'lista_ubicaciones' %}">Ver Ubicaciones</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+</div>
+
+<!-- Sección Sobre Nosotros -->
+<section class="py-5 bg-light">
+    <div class="container text-center">
+        <h2 class="mb-4">Sobre Nosotros</h2>
+        <p class="lead text-muted">
+            Somos un equipo dedicado a capturar, clasificar y compartir sonidos reales de la naturaleza.
+            Nuestro objetivo es promover la conservación del entorno natural a través de la educación auditiva y sensorial.
+        </p>
+    </div>
+</section>
+
+<!-- Sección Últimas Grabaciones -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="mb-4 text-center">Últimas Grabaciones</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="{% static 'environs/img/Monoaullador.jpg' %}" class="card-img-top" alt="Mono">
+                    <div class="card-body">
+                        <h5 class="card-title">Mono aullador</h5>
+                        <p class="card-text">Grabación capturada en la Amazonía ecuatoriana. Escucha su llamada natural.</p>
+                        <a href="{% url 'lista_grabaciones' %}" class="btn btn-outline-primary">Reproducir</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="{% static 'environs/img/Lorocabezaamarilla.jpg' %}" class="card-img-top" alt="Loro">
+                    <div class="card-body">
+                        <h5 class="card-title">Loro cabeza amarilla</h5>
+                        <p class="card-text">Registrado al amanecer en la costa. Su canto es único y musical.</p>
+                        <a href="{% url 'lista_grabaciones' %}" class="btn btn-outline-primary">Reproducir</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="{% static 'environs/img/Ranadecristal.jpg' %}" class="card-img-top" alt="Rana">
+                    <div class="card-body">
+                        <h5 class="card-title">Rana de cristal</h5>
+                        <p class="card-text">Pequeña pero sonora, esta especie habita riachuelos en los Andes.</p>
+                        <a href="{% url 'lista_grabaciones' %}" class="btn btn-outline-primary">Reproducir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
