@@ -77,10 +77,15 @@ WSGI_APPLICATION = 'SonidosNaturales.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sonidos_naturales',
+        'USER': 'usuario_sonidos',
+        'PASSWORD': 'mika2002',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
 
 
 # Password validation
