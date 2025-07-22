@@ -1,30 +1,57 @@
 {% extends 'plantilla.html' %}
-
 {% block contenido %}
+
 <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6 bg-light p-4 rounded">
-        <h1 class="mb-4">Nuevo Animal</h1>
+        <h1 class="mb-4 text-center">Nuevo Animal</h1>
+
         <form action="{% url 'guardar_animal' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
 
-            <label>Nombre Común</label>
-            <input type="text" name="nombre_comun" class="form-control" required>
+            <div class="mb-3">
+                <label for="nombre_comun" class="form-label">Nombre Común</label>
+                <input type="text" name="nombre_comun" id="nombre_comun" class="form-control" required>
+            </div>
 
-            <label>Nombre Científico</label>
-            <input type="text" name="nombre_cientifico" class="form-control">
+            <div class="mb-3">
+                <label for="nombre_cientifico" class="form-label">Nombre Científico</label>
+                <input type="text" name="nombre_cientifico" id="nombre_cientifico" class="form-control">
+            </div>
 
-            <label>Tipo</label>
-            <input type="text" name="tipo" class="form-control" placeholder="Ej: Ave, Mamífero" required>
+            <div class="mb-3">
+                <label for="tipo" class="form-label">Tipo</label>
+                <input type="text" name="tipo" id="tipo" class="form-control" placeholder="Ej: Ave, Mamífero" required>
+            </div>
 
-            <label>Imagen</label>
-            <input type="file" name="imagen" class="form-control mb-3">
+            <div class="mb-3">
+                <label for="imagen" class="form-label">Imagen</label>
+                <input id="imagen" name="imagen" type="file" class="file" data-browse-on-zone-click="true" accept="image/*">
+            </div>
 
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            <a class="btn btn-outline-danger" href="{% url 'lista_animales' %}">Cancelar</a>
+            <div class="text-end">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a class="btn btn-outline-danger" href="{% url 'lista_animales' %}">Cancelar</a>
+            </div>
         </form>
     </div>
     <div class="col-md-3"></div>
 </div>
-<br>
+
+<!-- Inicialización de FileInput -->
+<script>
+    $(document).ready(function () {
+        $("#imagen").fileinput({
+            theme: "fa",
+            language: "es",
+            allowedFileExtensions: ["jpg", "jpeg", "png"],
+            maxFileSize: 2048,
+            showUpload: false,
+            dropZoneEnabled: true,
+            browseLabel: "Seleccionar imagen",
+            removeLabel: "Eliminar",
+        });
+    });
+</script>
+
 {% endblock %}

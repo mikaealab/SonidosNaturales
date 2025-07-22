@@ -2,102 +2,155 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8">
-    <title>Sonidos Naturales</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>Sonidos Naturales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet"> 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet"> 
 
-    <!-- Iconos -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Iconos -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Librerías CSS -->
-    <link href="{% static 'environs/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
-    <link href="{% static 'environs/lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+  <!-- Librerías CSS de tu proyecto -->
+  <link href="{% static 'environs/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'environs/lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'environs/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'environs/css/style.css' %}" rel="stylesheet">
 
-    <!-- Estilos -->
-    <link href="{% static 'environs/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'environs/css/style.css' %}" rel="stylesheet">
+  <!-- ✅ Bootstrap Select -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/css/bootstrap-select.min.css">
+
+  <!-- ✅ FullCalendar (opcional, solo si lo usas) -->
+  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.css' rel='stylesheet' />
+
+  <!-- ✅ FileInput -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.4/css/fileinput.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- ✅ DataTables -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
 </head>
 
 <body>
-    <!-- Spinner -->
-    <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" role="status"></div>
-    </div>
+  <!-- Spinner -->
+  <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-grow text-primary" role="status"></div>
+  </div>
 
-    <!-- Navbar -->
-    <div class="container-fluid fixed-top px-0">
-        <div class="container px-0">
-            <div class="topbar">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-md-8">
-                        <div class="topbar-info d-flex flex-wrap">
-                            <a href="#" class="text-light me-4"><i class="fas fa-envelope text-white me-2"></i>info@sonidosnaturales.com</a>
-                            <a href="#" class="text-light"><i class="fas fa-phone-alt text-white me-2"></i>+593 999 999 999</a>
-                        </div>
-                    </div>
-                </div>
+  <!-- Navbar -->
+  <div class="container-fluid fixed-top px-0">
+    <div class="container px-0">
+      <div class="topbar">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-8">
+            <div class="topbar-info d-flex flex-wrap">
+              <a href="#" class="text-light me-4"><i class="fas fa-envelope text-white me-2"></i>info@sonidosnaturales.com</a>
+              <a href="#" class="text-light"><i class="fas fa-phone-alt text-white me-2"></i>+593 999 999 999</a>
             </div>
-            <nav class="navbar navbar-light bg-light navbar-expand-xl">
-                <a href="#" class="navbar-brand ms-3"></a>
-                    <h1 class="text-primary display-6">Sonidos Naturales</h1>
-                </a>
-                <button class="navbar-toggler py-2 px-3 me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars text-primary"></span>
-                </button>
-                <div class="collapse navbar-collapse bg-light" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto">
-                        <a href="{% url 'inicio' %}" class="nav-item nav-link">Inicio</a>
-                        <a href="{% url 'lista_animales' %}" class="nav-item nav-link">Animales</a>
-                        <a href="{% url 'lista_ubicaciones' %}" class="nav-item nav-link">Ubicaciones</a>
-                        <a href="{% url 'lista_grabaciones' %}" class="nav-item nav-link">Grabaciones</a>
-                    </div>
-                </div>
-            </nav>
+          </div>
         </div>
+      </div>
+      <nav class="navbar navbar-light bg-light navbar-expand-xl">
+        <a href="#" class="navbar-brand ms-3">
+          <h1 class="text-primary display-6">Sonidos Naturales</h1>
+        </a>
+        <button class="navbar-toggler py-2 px-3 me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="fa fa-bars text-primary"></span>
+        </button>
+        <div class="collapse navbar-collapse bg-light" id="navbarCollapse">
+          <div class="navbar-nav ms-auto">
+            <a href="{% url 'inicio' %}" class="nav-item nav-link">Inicio</a>
+            <a href="{% url 'lista_animales' %}" class="nav-item nav-link">Animales</a>
+            <a href="{% url 'lista_ubicaciones' %}" class="nav-item nav-link">Ubicaciones</a>
+            <a href="{% url 'lista_grabaciones' %}" class="nav-item nav-link">Grabaciones</a>
+          </div>
+        </div>
+      </nav>
     </div>
+  </div>
 
-    <!-- Contenido dinámico -->
-    <main class="pt-5 mt-5">
-        {% block contenido %}
-        {% endblock %}
-    </main>
+  <!-- Contenido dinámico -->
+  <main class="pt-5 mt-5">
+    {% block contenido %}
+    {% endblock %}
+  </main>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-4 mt-5">
-        <p class="mb-0">&copy; 2025 Sonidos Naturales. Todos los derechos reservados.</p>
-    </footer>
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-4 mt-5">
+    <p class="mb-0">&copy; 2025 Sonidos Naturales. Todos los derechos reservados.</p>
+  </footer>
 
-    <!-- Volver arriba -->
-    <a href="#" class="btn btn-primary btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+  <!-- Volver arriba -->
+  <a href="#" class="btn btn-primary btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>
 
-    <!-- Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'environs/lib/easing/easing.min.js' %}"></script>
-    <script src="{% static 'environs/lib/waypoints/waypoints.min.js' %}"></script>
-    <script src="{% static 'environs/lib/counterup/counterup.min.js' %}"></script>
-    <script src="{% static 'environs/lib/owlcarousel/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'environs/lib/lightbox/js/lightbox.min.js' %}"></script>
-    <script src="{% static 'environs/js/main.js' %}"></script>
+  <!-- jQuery y Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- SweetAlert para mensajes -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    {% if messages %}
-      {% for message in messages %}
-        <script>
-          Swal.fire({
-            title: "CONFIRMACIÓN",
-            text: "{{ message }}",
-            icon: "success",
-          });
-        </script>
-      {% endfor %}
-    {% endif %}
+  <!-- jQuery Validation -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+
+  <!-- Bootstrap Select -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/bootstrap-select.min.js"></script>
+
+  <!-- FullCalendar (opcional) -->
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.js'></script>
+
+  <!-- FileInput -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.4/js/fileinput.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.0/js/locales/es.min.js"></script>
+
+  <!-- DataTables + Botones -->
+  <script src="https://cdn.datatables.net/2.3.2/js/dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+
+  <!-- Librerías de tu sistema -->
+  <script src="{% static 'environs/lib/easing/easing.min.js' %}"></script>
+  <script src="{% static 'environs/lib/waypoints/waypoints.min.js' %}"></script>
+  <script src="{% static 'environs/lib/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'environs/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'environs/lib/lightbox/js/lightbox.min.js' %}"></script>
+  <script src="{% static 'environs/js/main.js' %}"></script>
+
+  <!-- SweetAlert para mensajes -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  {% if messages %}
+    {% for message in messages %}
+      <script>
+        Swal.fire({
+          title: "CONFIRMACIÓN",
+          text: "{{ message }}",
+          icon: "success",
+        });
+      </script>
+    {% endfor %}
+  {% endif %}
+
+  <!-- Inicialización DataTable ejemplo -->
+    <script>
+        $(document).ready(function () {
+        if ($('.datatable').length) {
+            new DataTable('.datatable', {
+            language: {
+                url: 'https://cdn.datatables.net/plug-ins/2.3.1/i18n/es-ES.json'
+            },
+            dom: 'Bfrtip',
+            buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+            });
+        }
+        });
+    </script>
+
+
+
 </body>
 </html>

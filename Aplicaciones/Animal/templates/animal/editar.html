@@ -1,35 +1,68 @@
 {% extends 'plantilla.html' %}
 {% block contenido %}
+
 <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6 bg-light p-4 rounded">
-        <h1 class="mb-4">Editar Animal</h1>
+        <h1 class="mb-4 text-center">Editar Animal</h1>
 
         <form action="{% url 'procesar_edicion_animal' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="hidden" name="id" value="{{ animalEditar.id }}">
 
-            <label>Nombre Común</label>
-            <input type="text" name="nombre_comun" value="{{ animalEditar.nombre_comun }}" class="form-control" required>
+            <div class="mb-3">
+                <label for="nombre_comun" class="form-label">Nombre Común</label>
+                <input type="text" name="nombre_comun" id="nombre_comun" value="{{ animalEditar.nombre_comun }}" class="form-control" required>
+            </div>
 
-            <label>Nombre Científico</label>
-            <input type="text" name="nombre_cientifico" value="{{ animalEditar.nombre_cientifico }}" class="form-control">
+            <div class="mb-3">
+                <label for="nombre_cientifico" class="form-label">Nombre Científico</label>
+                <input type="text" name="nombre_cientifico" id="nombre_cientifico" value="{{ animalEditar.nombre_cientifico }}" class="form-control">
+            </div>
 
-            <label>Tipo</label>
-            <input type="text" name="tipo" value="{{ animalEditar.tipo }}" class="form-control" required>
+            <div class="mb-3">
+                <label for="tipo" class="form-label">Tipo</label>
+                <input type="text" name="tipo" id="tipo" value="{{ animalEditar.tipo }}" class="form-control" required>
+            </div>
 
-            <label>Imagen</label>
             {% if animalEditar.imagen %}
-                <p><strong>Imagen actual:</strong></p>
-                <img src="{{ animalEditar.imagen.url }}" alt="Imagen" width="100" class="mb-2">
+            <div class="mb-3">
+                <label for="imagen" class="form-label">Imagen actual</label>
+                <img id="preview" class="img-fluid rounded" src="{{ animalEditar.imagen.url }}" alt="Imagen" style="max-width: 200px;">
+            </div>
             {% endif %}
-            <input type="file" name="imagen" class="form-control mb-3">
 
-            <button type="submit" class="btn btn-primary">Actualizar</button>
-            <a class="btn btn-outline-danger" href="{% url 'lista_animales' %}">Cancelar</a>
+            <div class="mb-3">
+                <label for="imagen" class="form-label">Imagen</label>
+                <input id="imagen" name="imagen" type="file" class="file" data-browse-on-zone-click="true" accept="image/*">
+            </div>
+
+            <div class="text-end">
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+                <a class="btn btn-outline-danger" href="{% url 'lista_animales' %}">Cancelar</a>
+            </div>
+            
+            
         </form>
     </div>
     <div class="col-md-3"></div>
 </div>
-<br>
+
+<!-- Inicializar FileInput con vista previa -->
+<script>
+  const input = document.querySelector('input[name="imagen"]');
+  const preview = document.getElementById('preview');
+
+  input.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+      preview.src = URL.createObjectURL(file);
+      preview.classList.remove("d-none");
+    } else {
+      preview.classList.add("d-none");
+    }
+  });
+</script>
+
+
 {% endblock %}
