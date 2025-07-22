@@ -22,4 +22,6 @@ urlpatterns = [
     path('', lambda request: redirect('/animal/')),  # Redirect root URL to animal list
     path('admin/', admin.site.urls),
     path('animal/', include('Aplicaciones.Animal.urls')),
+    path('ubicacion/', include('Aplicaciones.Ubicacion.urls')),
+    path('grabacion/', include('Aplicaciones.Grabacion.urls')),
 ]
