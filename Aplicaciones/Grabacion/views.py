@@ -5,6 +5,7 @@ from Aplicaciones.Animal.models import Animal
 from Aplicaciones.Ubicacion.models import Ubicacion
 
 
+
 # Listar grabaciones
 def listaGrabaciones(request):
     grabaciones = Grabacion.objects.all()
